@@ -4,6 +4,9 @@ import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { name, about, bio, avatar } from 'lib/info';
+import Image from 'next/image';
+
 
 const navItems = {
   '/': {
@@ -18,62 +21,32 @@ const navItems = {
     y: 35,
     w: '65px',
   },
-  '/blog': {
+/*   '/blog': {
     name: 'blog',
     x: 127,
     y: 69,
     w: '56px',
-  },
-  '/guestbook': {
+  }, */
+/*   '/guestbook': {
     name: 'guestbook',
     x: 182,
     y: 104,
     w: '100px',
-  },
+  }, */
 };
 
 function Logo() {
   return (
-    <Link aria-label="Lee Robinson" href="/">
-      <motion.svg
-        className="text-black dark:text-white h-[25px] md:h-[37px]"
-        width="25"
-        height="37"
-        viewBox="0 0 232 316"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <motion.path
-          initial={{
-            opacity: 0,
-            pathLength: 0,
-          }}
-          animate={{
-            opacity: 1,
-            pathLength: 1,
-          }}
-          transition={{
-            duration: 0.5,
-            type: 'spring',
-            stiffness: 50,
-          }}
-          d="M39 316V0"
-          stroke="currentColor"
-          strokeWidth={78}
+    <div className="flex items-start md:items-center my-8 flex-col md:flex-row">
+        <Image
+          alt={name}
+          className="rounded-full"
+          src={avatar}
+          placeholder="blur"
+          width={100}
+          priority
         />
-        <motion.path
-          initial={{ x: -200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            type: 'spring',
-            stiffness: 50,
-          }}
-          d="M232 314.998H129.852L232 232.887V314.998Z"
-          fill="currentColor"
-        />
-      </motion.svg>
-    </Link>
+      </div>
   );
 }
 
